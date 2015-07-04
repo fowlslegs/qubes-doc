@@ -13,6 +13,7 @@ Qubes Developers FAQ
     3.  [Q: What is the recommended build environment?](#q-what-is-the-recommended-build-environment)
     4.  [Q: How to build Qubes from sources?](#q-how-to-build-qubes-from-sources)
     5.  [Q: How do I submit a patch?](#q-how-do-i-submit-a-patch)
+    6.  [Q: Why was the 'storage domain' describe in the original architecture document never implemented?](#q-why-was-the-storage-domain-never-implemented)
 
 ### Q: Why does dom0 need to be 64-bit?
 
@@ -49,4 +50,10 @@ See [the instruction](/doc/QubesBuilder/)
 1.  Create the patch using 'git format-patch'. This has an advantage over 'git diff', because the former will also include your commit message, your name and email, so that \*your\* name will be used as a commit's author.
 
 1.  Send your patch to qubes-devel. Start the message subject with the '[PATCH]' string.
+
+### Q: Why was the 'storage domain' describe in the original architecture document never implemented?
+
+Implementing the storage domain "assumes that we leave no disk controller in Dom0 (because in 99.99% of cases there is only one disk controller on desktop systems). This, in turn, implies that both system’s /boot as well as the whole Dom0’s filesystems are served by the *untrusted* storage domain.  And in order to make this domain really untrusted we need to use smart crypto tricks and trusted boot, as described in the Qubes Architecture Specification. This all would require some complex changes to Qubes core.
+  Additionally this would decrease hardware compatibility, as at the very least we would need to require TPM, preferably TPM + TXT, and we would need to set up a trusted boot during installation (which would requite asking user e.g. to enable and take ownership of a TPM), which would, in turn, make the installation procedure much less user friendly.  Taking this all into account, and also the fact that the disk backend that we have in Dom0 doesn’t seem like a likely attack vector, after all, we concluded not to implement it, at least not anytime soon”
+  ---Joanna Rutkowska--see full discussion [here](https://groups.google.com/forum/#!searchin/qubes-devel/storage$20domain/qubes-devel/B1mAjAAl6G4/vpt4zSAXbu0J).
 
