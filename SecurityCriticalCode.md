@@ -51,4 +51,5 @@ The above means that we must trust at least some of the vendors (not all, of cou
 Cooperative Covert Channels Between Domains
 -------------------------------------------
 
-Qubes does not attempt to eliminate all possible *cooperative* covert channels between domains, i.e. such channels that could be established between two *compromised* domains. We don't believe this is possible to achieve on x86 hardware, and we also doubt it makes any sense in practice for most users -- after all if the two domains are compromised, then it's already (almost) all lost anyway.
+Qubes does not attempt to eliminate all possible *cooperative* covert channels between domains,
+i.e., such channels that could be established between two *compromised* domains. We don't believe this is possible to achieve on x86 hardware, and we also doubt it makes any sense in practice for most users -- after all if the two domains are compromised, then it's already (almost) all lost anyway.
